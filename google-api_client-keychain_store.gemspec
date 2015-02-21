@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Google::APIClient::KeychainStore::VERSION
   spec.authors       = ['Genki Sugawara']
   spec.email         = ['sugawara@cookpad.com']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ''
+  spec.summary       = %q{KeychainStore for Google API Client.}
+  spec.description   = %q{KeychainStore for Google API Client.}
+  spec.homepage      = 'https://github.com/winebarrel/google-api_client-keychain_store'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

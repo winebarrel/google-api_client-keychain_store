@@ -1,6 +1,6 @@
 # Google::APIClient::KeychainStore
 
-TODO: Write a gem description
+KeychainStore for [Google API Client](https://github.com/google/google-api-ruby-client).
 
 ## Installation
 
@@ -20,12 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+#!/usr/bin/env ruby
 
-## Contributing
+# see https://github.com/winebarrel/google_drive-persistent_session
+require 'google_drive/persistent_session'
 
-1. Fork it ( https://github.com/[my-github-username]/google-api_client-keychain_store/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+require 'google/api_client/keychain_store'
+
+GoogleDrive::CredentialStorage.store = Google::APIClient::KeychainStore.new('google_drive-oauth2.json')
+
+session = GoogleDrive::PersistentSession.login
+
+session.files.each do |file|
+  puts file.title
+end
+```
