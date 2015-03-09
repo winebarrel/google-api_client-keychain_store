@@ -15,32 +15,23 @@ class Google::APIClient::KeychainStore
   end
 
   def delete_credentials
-    items.where(:service => @service).all.each(&:delete)
+    if Security::GenericPassword.find(:service => @service)
+      Security::GenericPassword.delete(:service => @service)
+    end
+
     nil
   end
 
   private
 
   def credentials
-    item = items.where(:service => @service).first
+    item = Security::GenericPassword.find(:service => @service)
     item ? item.password : nil
   end
 
   def credentials=(json)
-    item = items.where(:service => @service).first
-
-    if item
-      item.password = json
-      item.save!
-    else
-      item = items.create(:service => @service, :account => @service, :password => json)
-    end
-
+    delete_credentials
+    Security::GenericPassword.add(@service, @service, json)
     json
-  end
-
-
-  def items
-    Keychain.default.generic_passwords
   end
 end

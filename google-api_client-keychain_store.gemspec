@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'google-api-client'
-  spec.add_dependency 'ruby-keychain'
+  spec.add_dependency 'security'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'google_drive-persistent_session', '~> 0.1.2'
